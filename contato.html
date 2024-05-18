@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="headerContent">
+        <div class="divLogo">
+            <img src="img/logoHeader.png" class="imgg" alt="logo">
+        </div>
+
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="sobre.html">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="projetos.html">Projetos</a>
+                    </li>
+                    <li>
+                        <a href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="sectionContato">
+        <h1>Contato</h1>
+        <div class="quadradoContato">
+
+            <div class="sociaisAzul">
+                <h1>Contate-me</h1>
+                <p style="display: flex; justify-content: center; text-align: center;">Saiba mais sobre mim em outras redes sociais</p>
+                <div class="whatsapp">
+                    <img src="img/whatsapp.png" height="40px" width="40px" alt="WhatsApp">
+                    <p> +55 (61) 995997277</p>
+                </div>
+
+                <div class="instagram">
+                    <img src="img/instagram.png" height="40px" width="40px" alt="Instagram">
+                    <a href="https://www.instagram.com/jotavej_">@jotavej_</a>
+                </div>
+
+                <div class="linkedinContato">
+                    <img src="img/linkedinContato.png" width="40px" height="40px" alt="LinkedIn">
+                    <a href="https://www.linkedin.com/in/joao-vitor-januario-de-freitas">João Vítor Januário De Freitas</a>
+                </div>
+
+                <div class="github">
+                    <img src="img/github.png" width="40px" height="40px" alt="GitHub">
+                    <a href="https://github.com/Joao2511">Joao2511</a>
+                </div>
+
+            </div>
+
+            <div class="divContato">
+                <form class="inputs" id="contatoForm">
+
+                    <legend>Email</legend>
+                    <input type="email" class="inputEmail" required>
+
+                    <legend>Telefone</legend>
+                    <input type="text" class="inputNumero" id="numeroTelefone" oninput="numeroCelFormatado()"
+                        onblur="numeroCelFormatado()">
+
+                    <legend>Descreva sua mensagem</legend>
+                    <textarea class="inputText" required></textarea>
+
+                    <div style="display: flex; justify-content: center;">
+                        <button type="submit" id="enviarMensagem" class="botaoContato">
+                            <img src="img/msg.png" height="30px" width="30px" alt="">
+                            <p>Enviar mensagem</p>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function formatoNumero(value) {
+            if (!value) return value;
+            const numeroTel = value.replace(/[^\d]/g, '');
+            const tamanhoNumeroCelular = numeroTel.length;
+
+            if (tamanhoNumeroCelular < 3) {
+                return numeroTel;
+            }
+            if (tamanhoNumeroCelular < 7) {
+                return `(${numeroTel.slice(0, 2)}) ${numeroTel.slice(2)}`;
+            }
+            if (tamanhoNumeroCelular < 11) {
+                return `(${numeroTel.slice(0, 2)}) ${numeroTel.slice(2, 6)}-${numeroTel.slice(6)}`;
+            }
+            return `(${numeroTel.slice(0, 2)}) ${numeroTel.slice(2, 7)}-${numeroTel.slice(7, 11)}`;
+        }
+
+        function numeroCelFormatado() {
+            const inputField = document.getElementById('numeroTelefone');
+            const valorInputFormatado = formatoNumero(inputField.value);
+            inputField.value = valorInputFormatado;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contatoForm');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                alert('Mensagem enviada com sucesso!');
+            });
+        });
+    </script>
+</body>
+
+</html>
